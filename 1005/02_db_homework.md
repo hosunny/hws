@@ -1,39 +1,38 @@
-# 1. SQL 용어 및 개념
+# 1. . N:1 True or False
 
-    (1) 스키마
+    (1) T
 
-    (2) 테이블
+    (2) F (DB api 를 통해 참조 가능)
 
-    (3) 레코드
+    (3) T
 
-    (4) 컬럼
-
-    (5) 기본 키
+    (4) F (유니크하다면 가능)
 
 # 
 
-# 2. SQL 문법
+# 2. ForeignKey column name
 
-* (1)
-
-# 
-
-# 3. Relational DBMS
-
-* 관계형 데이터베이스를 만들고 업데이트하고 관리하는 데 사용하는 프로그램
-
-* SQLite, MySQL, Oracle Database
+* answer_id
+* articles_comment
 
 # 
 
-# 4. INSERT INTO
+# 3. N:1 model manager
 
-* (3)
+* question.comment_set.all
 
 # 
 
-# 5. 와일드카드 문자
+# 4. next parameter
 
-* %: 0개 이상 문자가 오는 것이 가능
-
-* _ : _자리에 문자 하나만 올 수 있음
+* 405에러
+  
+  ```python
+  @require_POST
+  def delete(request, article_pk):
+      if request.user.is_authenticated:
+          article = get_object_or_404(Article, pk=article_pk)
+          article.delete()
+          return redirect('articles:index')
+     return redirect('articles:detail', article_pk)
+  ```
